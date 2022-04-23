@@ -1,0 +1,45 @@
+{
+  "name": "testingApp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "postinstall": "npm run copy-libs",
+    "update-deps": "npm update",
+    "postupdate-deps": "npm run copy-libs",
+    "copy-libs": "cpx \"node_modules/{angular,angular-*,bootstrap/dist}/**/*\" app/lib -C",
+    "start": "node server.js",
+    "pretest": "npm install",
+    "test": "karma start karma.conf.js",
+    "test-single-run": "npm test -- --single-run",
+    "preupdate-webdriver": "npm install",
+    "update-webdriver": "webdriver-manager update",
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor e2e-tests/protractor.conf.js"
+  },
+  "author": "Shubham Singh",
+  "license": "ISC",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.24",
+    "angular": "^1.7.9",
+    "body-parser": "^1.19.0",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.6",
+    "morgan": "^1.10.0",
+    "query-string": "^6.13.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.7.9",
+    "cpx": "^1.5.0",
+    "dotenv": "^8.2.0",
+    "jasmine-core": "^3.5.0",
+    "karma": "^5.1.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.3.0",
+    "karma-jasmine": "^1.1.2",
+    "protractor": "^7.0.0"
+  }
+}

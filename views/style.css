@@ -1,0 +1,54 @@
+#list {
+	margin-top: 50px; margin-bottom: 50px;
+}
+
+#newForm label {
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+
+#newForm input {
+	border: 1px solid #333;
+	padding-bottom: 5px;
+	margin: 5px;
+}
+
+#newForm span {
+	float: right;
+}
+
+#addBtn {
+	float: right;
+	width: 100px;
+	margin-top: 20px;
+}
+
+#find {
+	border: 1px solid #333;
+	margin-left: 20px;
+	border-radius: 3px;
+}
+
+#deleteBtn {
+	float: right;
+	background-color: #f2f2f2;
+	width: 100px;
+}
+
+button {
+	border-radius: 3px;
+}
+
+@media only screen and (max-width: 430px) {
+	#newForm input {
+		border: 1px solid #333;
+		padding-bottom: 5px;
+		margin: 5px;
+		width: 200px;
+	}
+	#searchInput {
+		border: 1px solid #333;
+		width: 200px;
+	}
+}

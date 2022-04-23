@@ -1,0 +1,91 @@
+
+
+<div ng-controller="list" id="list">
+
+	<div class="row">
+		<div class="col-md-7">
+			<p>Find: 
+				<span style="margin-left: 20px;">
+					<input type="text" ng-model="query" type="search" aria-label="Search" id="searchInput">
+				</span>
+
+				<button type="button" id="deleteBtn" data-toggle="modal" data-target="#exampleModal">Delete</button>
+
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body" style="color: red;">
+								Are you sure, You want To Delete.?
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+								<button type="button" class="btn btn-danger" ng-click="deleteUser()" data-dismiss="modal"
+								 aria-label="Close">Yes</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</p>
+
+			<div class="table-responsive" style="border: 1px solid #333;">
+				<table class="table">
+					<thead>
+						<tr class="table-info">
+							<th scope="col">#</th>
+							<th scope="col">Name</th>
+							<th scope="col">Description</th>
+							<th scope="col">Web Reference</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="myJsonData in myJsonDatas | filter: query">
+							<!-- <th scope="row">1</th> -->
+							<td><input type="checkbox" ng-click="getChecked(myJsonData.id)"></td>
+							<td>{{myJsonData.name}}</td>
+							<td>{{myJsonData.description}}</td>
+							<td>{{myJsonData.webReference}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+		<div class="col-md-4" id="newForm">
+
+			<form name="regForm" ng-submit="addNewData(formData)">
+				<br>
+
+				<label for="name">Name: </label>
+				<span>
+					<input type="text" name="name" class="form-control" placeholder="Name" ng-model="formData.name" required>
+				</span>
+				<br>
+				<br>
+				<label for="description">Description: </label>
+				<span>
+					<input type="text" name="description" class="form-control" placeholder="Description" ng-model="formData.description" required>
+				</span>
+				<br>
+				<br>
+				<label for="webRef">Web Reference: </label>
+				<span>
+					<input type="text" name="webRef" class="form-control" placeholder="Web Reference" ng-model="formData.webRef" required>
+				</span>
+				<br>
+				<br>
+				<button type="submit" id="addBtn">Add</button>
+			</form>
+
+		</div>
+		<!-- <div>
+			<button type="button" id="cancelBtn">Cancel</button><span><button type="button" id="cancelBtn">Cancel</button></span>
+		</div> -->
+	</div>
+
+</div>
