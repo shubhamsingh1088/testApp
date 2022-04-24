@@ -18,7 +18,7 @@ app.config(function ($qProvider) {
     $qProvider.errorOnUnhandledRejections(false);
 });
 
-app.controller("list", ["$scope", "allData", "$window", function($scope, allData, $window) {
+app.controller("list", ["$scope", "allData", function($scope, allData) {
 
   // Angular service to call json data
 
@@ -37,21 +37,27 @@ app.controller("list", ["$scope", "allData", "$window", function($scope, allData
       $scope.formData = {};
     }
 
-    // Collecting all Checked Columns in table
     $scope.selectedCheckbox = [];
 
     $scope.getChecked = function(userId){
-      $scope.selectedCheckbox.push(userId);
+      if ($scope.selectedCheckbox.indexOf(userId) == -1) {
+        $scope.selectedCheckbox.push(userId);
+      }
+      console.log($scope.selectedCheckbox);
     };
 
-
-    // Function to delete a User column from table
-    $scope.deleteUser = function(values) {
+    $scope.deleteUser = function() {
+      if ($scope.selectedCheckbox.length === 0) {
+        alert("Please select a column to delete");
+      }
       angular.forEach($scope.selectedCheckbox, function(n) {
         $scope.indexLength = $scope.selectedCheckbox.length;
         $scope.indexValue = n;
-        $scope.index = $scope.myJsonDatas.findIndex(x=> x.id === $scope.indexValue);
+        $scope.index = $scope.selectedCheckbox.indexOf($scope.indexValue);
+        console.log($scope.index);
+        console.log($scope.indexValue);
         $scope.myJsonDatas.splice($scope.index, $scope.indexLength);
+        $scope.selectedCheckbox = [];
       });
     }
 
